@@ -1,40 +1,47 @@
+/* Register.css */
+
 .register-container {
   max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 2rem auto;
+  padding: 2rem;
   border: 1px solid #ccc;
   border-radius: 10px;
-  font-family: sans-serif;
-}
-
-.register-title {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-.register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.register-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-.register-input {
-  padding: 10px;
-  font-size: 1rem;
+.register-container form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: 1px solid #aaa;
+  font-size: 1rem;
 }
 
-.register-button {
-  padding: 10px;
+.register-container button {
+  width: 100%;
+  padding: 0.75rem;
   font-size: 1rem;
-  background-color: #007bff;
+  background-color: #3f51b5;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.register-message {
-  margin-top: 10px;
-  font-size: 0.9rem;
+.register-container button:hover {
+  background-color: #303f9f;
+}
+
+.register-container hr {
+  margin: 2rem 0;
 }

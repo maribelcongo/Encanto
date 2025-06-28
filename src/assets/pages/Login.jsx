@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, googleProvider } from "../../../firebase";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import ButterflySpinner from "../../components/ButterflySpinner"; // ajusta el path si es necesario
-import "./register.css";
+import "./Register.css"; // Reutiliza el mismo archivo CSS
 
-const Register = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       navigate("/carrito");
     } catch (error) {
-      alert(error.message);
+      alert("Error al iniciar sesión: " + error.message);
     } finally {
       setLoading(false);
     }
@@ -30,7 +30,7 @@ const Register = () => {
       await signInWithPopup(auth, googleProvider);
       navigate("/carrito");
     } catch (error) {
-      alert(error.message);
+      alert("Error con Google: " + error.message);
     } finally {
       setLoading(false);
     }
@@ -40,8 +40,8 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h2>Registro</h2>
-      <form onSubmit={handleRegister}>
+      <h2>Iniciar Sesión</h2>
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Correo electrónico"
@@ -56,14 +56,14 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Registrarse</button>
+        <button type="submit">Iniciar Sesión</button>
       </form>
 
       <hr />
 
-      <button onClick={handleGoogle}>Registrarse con Google</button>
+      <button onClick={handleGoogle}>Iniciar con Google</button>
     </div>
   );
 };
 
-export default Register;
+export default Login;
